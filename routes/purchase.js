@@ -14,7 +14,7 @@ module.exports = (app, db) => {
 					if (err) throw err;
 					console.log('Closed!');
 				});
-			}, 1000)
+			}, 4000)
 		});
 	return res.send('Ok!')
 	});
