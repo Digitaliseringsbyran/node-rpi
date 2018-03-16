@@ -13,6 +13,7 @@ module.exports = (app, db) => {
 				gpio.write(4, false, function(err) {
 					if (err) throw err;
 					console.log('Closed!');
+					return res.send(req.body)
 				});
 			}, 1000)
 		});
