@@ -1,14 +1,24 @@
-const gpio = require('rpi-gpio')
-const pin = 18; 
+var gpio = require('rpi-gpio');
 
-gpio.setup(7, gpio.DIR_OUT, write);
-
-set(7, true)
-setTimeout(set(7, false), 3000);
-
-function set(pin, value) {
-	gpio.write(pin, value, function(err) {
+gpio.setMode(gpio.MODE_BCM);
+gpio.setup(4, gpio.DIR_HIGH, (err) => {
+	gpio.write(4, true, function(err) {
 		if (err) throw err;
-		console.log(`Written to pin`);
+		console.log('B33333r');
 	});
-}
+
+	setTimeout(() => {
+		gpio.write(4, false, function(err) {
+			        if (err) throw err;
+			        console.log('ÖL stängd');
+				process.exit();
+			    });
+	}, 1000)
+});
+ 
+/*function write() {
+	    gpio.write(4, true, function(err) {
+		            if (err) throw err;
+		            console.log('Written to pin');
+		        });
+}*/
